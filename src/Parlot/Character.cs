@@ -7,6 +7,9 @@ namespace Parlot
         public static bool IsDecimalDigit(char ch)
             => ch >= '0' && ch <= '9';
 
+        public static bool IsInRange(char ch, char a, char b)
+            => ch >= a && ch <= b;
+
         public static bool IsHexDigit(char ch)
             => IsDecimalDigit(ch) ||
                 (ch >= 'A' && ch <= 'F') ||
@@ -37,7 +40,10 @@ namespace Parlot
         }
 
         public static bool IsWhiteSpaceOrNewLine(char ch)
-            => (ch == '\n') || (ch == '\r') || (ch == '\v') || IsWhiteSpace(ch);
+            => IsNewLine(ch) || IsWhiteSpace(ch);
+
+        public static bool IsNewLine(char ch)
+            => (ch == '\n') || (ch == '\r') || (ch == '\v');
 
         public static char ScanHexEscape(string text, int index, out int length)
         {
